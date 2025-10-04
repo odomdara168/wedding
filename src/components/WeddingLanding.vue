@@ -263,6 +263,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import qrImage from '../assets/QR.png'
+import heroBackground from '../assets/my pre wedding.jpg'
 import gallery1 from '../assets/photo_2025-10-04 19.54.10.jpeg'
 import gallery2 from '../assets/photo_2025-10-04 19.54.15.jpeg'
 import gallery3 from '../assets/photo_2025-10-04 19.54.19.jpeg'
@@ -283,7 +284,7 @@ function onLangChange() {
 // Parallax effect
 const scrollY = ref(0)
 const heroStyleWithParallax = computed(() => {
-  return `background-image: url('/src/assets/my pre wedding.jpg'); background-size: cover; background-position: center ${scrollY.value * 0.5}px;`
+  return `background-image: url('${heroBackground}'); background-size: cover; background-position: center ${scrollY.value * 0.5}px;`
 })
 
 // Floating petals animation - more subtle
