@@ -1,0 +1,13 @@
+{
+  "nav": { "gallery": "Gallery", "schedule": "Event Details", "donation": "Gift" },
+  "hero": { "date": "November 30, 2025" },
+  "cta": { "rsvp": "RSVP", "openRsvp": "Open RSVP" },
+  "count": { "days": "DAYS", "hours": "HOURS", "minutes": "MINUTES", "seconds": "SECONDS" },
+  "story": { "title": "Our Story", "body": "We met in a coffee shop in downtown... Add your story here." },
+  "event": { "title": "Event Details", "dateLabel": "Date:", "date": "Sunday, November 30, 2025", "timeLabel": "Time:", "time": "Ceremony Begin at 6:30 AM", "venueLabel": "Venue:", "venue": "Sokha Hotel" },
+  "donation": { "title": "Gift / Donations", "info": "If you'd like to give a wedding gift, you can scan our QR code below." },
+  "rsvp": { "title": "RSVP", "info": "Please click RSVP to fill the form" },
+  "gallery": { "title": "Gallery" },
+  "qr": { "title": "Scan to Donate", "info": "Scan with your bank app or use the buttons below.", "download": "Download QR", "share": "Share", "copy": "Copy QR text", "openBank": "Open Bank App", "close": "Close", "shareText": "Scan this QR to send your wedding gift 💝", "shareNotSupported": "Sharing not supported on this device.", "shareFailed": "Share failed.", "copied": "Copied to clipboard.", "copyFailed": "Copy failed.", "attempting": "Attempting to open your banking app. If nothing happens, please download the QR image and open your bank app manually.", "show": "Show QR", "quick": "Quick Donate", "clickHere": "Open ABA", "useButton": "Please use the button below to send your gift" },
+  "footer": { "text": "Made with love — Odom & Vatan" }
+}

@@ -1,0 +1,13 @@
+{
+  "nav": { "gallery": "相册", "schedule": "活动详情", "donation": "礼物" },
+  "hero": { "date": "2025年11月30日" },
+  "cta": { "rsvp": "回复", "openRsvp": "打开 RSVP" },
+  "count": { "days": "天", "hours": "小时", "minutes": "分钟", "seconds": "秒" },
+  "story": { "title": "我们的故事", "body": "我们在市中心的一家咖啡馆相遇……在此处添加您的故事。" },
+  "event": { "title": "活动详情", "dateLabel": "日期：", "date": "星期日，2025年11月30日", "timeLabel": "时间：", "time": "仪式于上午6:30开始", "venueLabel": "地点：", "venue": "Sokha Hotel" },
+  "donation": { "title": "礼物 / 捐赠", "info": "如果您想赠送礼物，可以扫描我们的二维码。" },
+  "rsvp": { "title": "回复", "info": "请点击 RSVP 填写表格" },
+  "gallery": { "title": "相册" },
+  "qr": { "title": "扫码捐赠", "info": "请使用您的银行应用扫码或使用下面按钮。", "download": "下载二维码", "share": "分享", "copy": "复制二维码文本", "openBank": "打开银行应用", "close": "关闭", "shareText": "扫码此二维码以发送婚礼礼物 💝", "shareNotSupported": "此设备不支持分享。", "shareFailed": "分享失败。", "copied": "已复制到剪贴板。", "copyFailed": "复制失败。", "attempting": "正在尝试打开您的银行应用。如果没有反应，请下载二维码图片并手动打开银行应用。", "show": "显示二维码", "quick": "快速捐赠", "clickHere": "打开ABA", "useButton": "请使用下面的按钮发送礼物" },
+  "footer": { "text": "由爱制作 — Odom & Vatan" }
+}
