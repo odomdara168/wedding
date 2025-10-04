@@ -284,7 +284,7 @@ function onLangChange() {
 // Parallax effect
 const scrollY = ref(0)
 const heroStyleWithParallax = computed(() => {
-  return `background-image: url('${heroBackground}'); background-size: cover; background-position: center ${scrollY.value * 0.5}px;`
+  return `background-image: url('${heroBackground}'); background-size: cover; background-position: center center;`
 })
 
 // Floating petals animation - more subtle
