@@ -300,35 +300,33 @@ function petalStyle(index) {
 }
 
 // Music player with YouTube
-const isMusicPlaying = ref(true)
+const isMusicPlaying = ref(false)
 let player = null
 let musicTimer = null
+let hasUnmuted = false
 
 async function toggleMusic() {
   if (!player) {
     player = await initYouTubePlayer()
+  }
+
+  if (isMusicPlaying.value) {
+    player.pauseVideo()
+    isMusicPlaying.value = false
+    if (musicTimer) clearTimeout(musicTimer)
+  } else {
     player.playVideo()
+    if (!hasUnmuted) {
+      player.unMute()
+      player.setVolume(20)
+      hasUnmuted = true
+    }
     isMusicPlaying.value = true
 
-    // Stop after 1 minute
     musicTimer = setTimeout(() => {
       player.pauseVideo()
       isMusicPlaying.value = false
     }, 60000)
-  } else {
-    if (isMusicPlaying.value) {
-      player.pauseVideo()
-      isMusicPlaying.value = false
-      if (musicTimer) clearTimeout(musicTimer)
-    } else {
-      player.playVideo()
-      isMusicPlaying.value = true
-
-      musicTimer = setTimeout(() => {
-        player.pauseVideo()
-        isMusicPlaying.value = false
-      }, 60000)
-    }
   }
 }
 
@@ -350,19 +348,6 @@ function initYouTubePlayer() {
           events: {
             onReady: (event) => {
               event.target.playVideo()
-
-              // Unmute immediately after starting
-              setTimeout(() => {
-                event.target.unMute()
-                event.target.setVolume(20)
-              }, 100)
-
-              // Stop after 1 minute
-              musicTimer = setTimeout(() => {
-                event.target.pauseVideo()
-                isMusicPlaying.value = false
-              }, 60000)
-
               resolve(player)
             },
             onStateChange: (event) => {
@@ -445,6 +430,29 @@ onMounted(() => {
   }
 
   setTimeout(initAPI, 1500)
+
+  // Auto-unmute on first interaction
+  const autoUnmute = () => {
+    if (player && !hasUnmuted) {
+      player.unMute()
+      player.setVolume(20)
+      hasUnmuted = true
+      isMusicPlaying.value = true
+
+      musicTimer = setTimeout(() => {
+        player.pauseVideo()
+        isMusicPlaying.value = false
+      }, 60000)
+
+      document.removeEventListener('click', autoUnmute)
+      document.removeEventListener('scroll', autoUnmute)
+      document.removeEventListener('touchstart', autoUnmute)
+    }
+  }
+
+  document.addEventListener('click', autoUnmute)
+  document.addEventListener('scroll', autoUnmute, { passive: true })
+  document.addEventListener('touchstart', autoUnmute, { passive: true })
 })
 
 onBeforeUnmount(() => {
