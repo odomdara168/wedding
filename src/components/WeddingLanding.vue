@@ -503,11 +503,12 @@ async function downloadQr() {
 
 /* Floating petals animation - subtle and elegant */
 .petal {
-  position: absolute;
+  position: fixed;
   top: -50px;
   font-size: 1.2rem;
   opacity: 0.3;
   animation: float-down linear infinite;
+  will-change: transform;
 }
 
 @keyframes float-down {
