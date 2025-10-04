@@ -225,10 +225,13 @@
               <a href="https://pay.ababank.com/oRF8/9ubz4m2a" target="_blank" class="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-sans py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base inline-block w-full sm:w-auto text-center">
                 {{ $t('qr.clickHere') }}
               </a>
-              <a :href="qrImage" download="wedding-gift-qr.png" class="bg-white border-2 border-rose-300 text-rose-600 hover:bg-rose-50 font-sans py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg text-base inline-block w-full sm:w-auto text-center">
+              <a :href="qrImage" target="_blank" class="bg-white border-2 border-rose-300 text-rose-600 hover:bg-rose-50 font-sans py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg text-base inline-block w-full sm:w-auto text-center">
                 {{ $t('qr.download') }}
               </a>
             </div>
+            <p class="text-gray-500 text-xs sm:text-sm text-center mt-4 italic">
+              {{ $t('qr.saveInstruction') }}
+            </p>
           </div>
         </div>
       </section>
