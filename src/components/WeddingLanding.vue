@@ -225,13 +225,10 @@
               <a href="https://pay.ababank.com/oRF8/9ubz4m2a" target="_blank" class="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-sans py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base inline-block w-full sm:w-auto text-center">
                 {{ $t('qr.clickHere') }}
               </a>
-              <a :href="qrImage" target="_blank" class="bg-white border-2 border-rose-300 text-rose-600 hover:bg-rose-50 font-sans py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg text-base inline-block w-full sm:w-auto text-center">
+              <button @click="shareQR" class="bg-white border-2 border-rose-300 text-rose-600 hover:bg-rose-50 font-sans py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg text-base w-full sm:w-auto text-center">
                 {{ $t('qr.download') }}
-              </a>
+              </button>
             </div>
-            <p class="text-gray-500 text-xs sm:text-sm text-center mt-4 italic">
-              {{ $t('qr.saveInstruction') }}
-            </p>
           </div>
         </div>
       </section>
@@ -477,21 +474,40 @@ function openImageModal(imgSrc) {
 }
 function closeImageModal() { imageModal.value = false }
 
-// QR download
-async function downloadQr() {
+// QR share/download
+async function shareQR() {
   try {
+    // Try Web Share API first (works great on mobile)
+    if (navigator.share && navigator.canShare) {
+      const response = await fetch(qrImage)
+      const blob = await response.blob()
+      const file = new File([blob], 'wedding-qr.png', { type: 'image/png' })
+
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'Wedding Gift QR Code',
+          text: 'Scan this QR code to send a wedding gift'
+        })
+        return
+      }
+    }
+
+    // Fallback: try download
     const res = await fetch(qrImage)
     const blob = await res.blob()
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'odom-vatan-wedding-qr.png'
+    a.download = 'wedding-qr.png'
     document.body.appendChild(a)
     a.click()
     a.remove()
     window.URL.revokeObjectURL(url)
   } catch (err) {
-    console.error('Download failed:', err)
+    console.error('Share/download failed:', err)
+    // Final fallback: open in new tab
+    window.open(qrImage, '_blank')
   }
 }
 </script>
